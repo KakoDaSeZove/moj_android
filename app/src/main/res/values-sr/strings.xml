@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Aktivnosti i Resursi</string>
+    <string name="first_activity_name">Prva Aktivnost</string>
+    <string name="second_activity_name">Druga Aktivnost</string>
+    <string name="side_dish_name">Predjelo</string>
+    <string name="main_dish_name">Glavno jelo</string>
+    <string name="dessert_name">Dezert</string>
+    <string name="name">IME:</string>
+    <string name="description">OPIS:</string>
+    <string name="category">KATEGORIJA:</string>
+    <string name="ingredients">SASTOJCI:</string>
+    <string name="calories">KALORIJE:</string>
+    <string name="prise">CENA:</string>
+    <string name="web_browser_button_name">Otvori Internet Pretrazivac</string>
+    <string name="camera_button_name">Otvori Kameru</string>
+</resources>

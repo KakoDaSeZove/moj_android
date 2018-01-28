@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- Declares a button that starts 2nd activity -->
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/side_dish_name"
+        android:id="@+id/start_side_dish_activity"
+        android:onClick="btnStartActivityClicked"
+        android:drawableLeft="@mipmap/ic_launcher"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/main_dish_name"
+        android:id="@+id/start_main_dish_activity"
+        android:onClick="btnStartActivityClicked"
+        android:drawableLeft="@mipmap/ic_launcher"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/dessert_name"
+        android:id="@+id/start_desert_activity"
+        android:onClick="btnStartActivityClicked"
+        android:drawableLeft="@mipmap/ic_launcher"/>
+
+    <!-- Declares a button that opens a browser -->
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/web_browser_button_name"
+        android:id="@+id/open_browser"
+        android:onClick="btnOpenBrowserClicked"
+        android:drawableLeft="@drawable/ic_web_browser"/>
+    
+</LinearLayout>

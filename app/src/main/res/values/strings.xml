@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Activities and Resourses</string>
+    <string name="first_activity_name">First Activity</string>
+    <string name="second_activity_name">Second Activity</string>
+    <string name="side_dish_name">Side dish</string>
+    <string name="main_dish_name">Main dish</string>
+    <string name="dessert_name">Desert</string>
+    <string name="name">NAME:</string>
+    <string name="description">DESCRIPTION:</string>
+    <string name="category">CATEGORY:</string>
+    <string name="ingredients">INGREDIENTS:</string>
+    <string name="calories">CALORIES:</string>
+    <string name="prise">PRICE:</string>
+    <string name="web_browser_button_name">Open WEB Browser</string>
+    <string name="camera_button_name">Open Camera</string>
+</resources>
