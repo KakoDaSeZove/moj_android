@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/third_button_name"
+        android:id="@+id/start_activity"
+        android:onClick="btnStartActivityClicked"
+        android:drawableLeft="@mipmap/ic_launcher"/>
+
+    <!-- Declares a button that opens a browser -->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/fourth_button_name"
+        android:id="@+id/open_browser"
+        android:onClick="btnOpenCameraClicked"
+        android:drawableLeft="@drawable/ic_camera"/>
+
+</LinearLayout>
+
