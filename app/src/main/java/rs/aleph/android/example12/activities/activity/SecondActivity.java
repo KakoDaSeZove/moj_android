@@ -28,9 +28,11 @@ public class SecondActivity extends Activity {
     private int position = 0;
 
     private Meal[] meals = new Meal[]{
-            new Meal("chocolat-cake.jpg", "Chocolat cake", "Crispy bark with chocolate cream", Category.DESERT, "Chocolate, butter, nuts", 1000, 400.0),
+
+            new Meal("roasted-baby-spring-vegetables-ck.jpg", "Vegetables", "Roasted spring vegetables", Category.SIDE_DISH, "Potatoes, carrots, seasonal vegetables", 320, 470.0),
             new Meal("Grilled-Salmon.jpg", "Grilled salmon", "Grilled salmon fish with grilled vegetables", Category.MAIN_DISH, "Fish, olive oil, vegetables", 650, 1500.0),
-            new Meal("roasted-baby-spring-vegetables-ck.jpg", "Vegetables", "Roasted spring vegetables", Category.SIDE_DISH, "Potatoes, carrots, seasonal vegetables", 320, 470.0)
+            new Meal("chocolat-cake.jpg", "Chocolat cake", "Crispy bark with chocolate cream", Category.DESERT, "Chocolate, butter, nuts", 1000, 400.0),
+
     };
 
     // onCreate method is a lifecycle method called when he activity is starting

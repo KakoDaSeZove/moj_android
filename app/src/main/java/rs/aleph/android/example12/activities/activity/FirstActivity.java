@@ -5,12 +5,15 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import rs.aleph.android.example12.R;
 
 // Each activity extends Activity class
-public class FirstActivity extends Activity {
+public class FirstActivity extends Activity implements AdapterView.OnItemClickListener{
 
     // onCreate method is a lifecycle method called when he activity is starting
     @Override
@@ -24,6 +27,16 @@ public class FirstActivity extends Activity {
         // Shows a toast message (a pop-up message)
         Toast toast = Toast.makeText(getBaseContext(), "FirstActivity.onCreate()", Toast.LENGTH_SHORT);
         toast.show();
+
+        final String[] meals = getResources().getStringArray(R.array.meals);
+
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, R.layout.list_item, meals);
+        ListView listView = (ListView) findViewById(R.id.listofMeals);
+
+        listView.setAdapter(dataAdapter);
+
+        listView.setOnItemClickListener(this);
+
     }
 
     // onStart method is a lifecycle method called after onCreate (or after onRestart when the
@@ -97,7 +110,7 @@ public class FirstActivity extends Activity {
     }
 
     // Called when btnStart button is clicked
-    public void btnStartActivityClicked(View view) {
+    /*public void btnStartActivityClicked(View view) {
         Intent intent = new Intent(FirstActivity.this, SecondActivity.class);
 
         if (view.getId() == R.id.start_side_dish_activity) {
@@ -119,5 +132,12 @@ public class FirstActivity extends Activity {
         Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://developer.android.com"));
         // startActivity method starts an activity
         startActivity(i);
+    }*/
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+        Intent intent = new Intent(FirstActivity.this, SecondActivity.class);
+        intent.putExtra("position", position);
+        startActivity(intent);
     }
 }

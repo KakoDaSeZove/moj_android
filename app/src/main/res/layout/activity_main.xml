@@ -4,33 +4,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <!-- Declares a button that starts 2nd activity -->
-
-    <Button
+    <ListView
+        android:id="@+id/listofMeals"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/side_dish_name"
-        android:id="@+id/start_side_dish_activity"
-        android:onClick="btnStartActivityClicked"
-        android:drawableLeft="@mipmap/ic_launcher"/>
+        android:layout_height="wrap_content"/>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/main_dish_name"
-        android:id="@+id/start_main_dish_activity"
-        android:onClick="btnStartActivityClicked"
-        android:drawableLeft="@mipmap/ic_launcher"/>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/dessert_name"
-        android:id="@+id/start_desert_activity"
-        android:onClick="btnStartActivityClicked"
-        android:drawableLeft="@mipmap/ic_launcher"/>
-
-    <!-- Declares a button that opens a browser -->
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
