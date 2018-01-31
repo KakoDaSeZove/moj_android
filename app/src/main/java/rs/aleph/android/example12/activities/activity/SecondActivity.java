@@ -6,34 +6,31 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
-import android.widget.Button;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.RatingBar;
+import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Locale;
+import java.util.List;
 
 import rs.aleph.android.example12.R;
 import rs.aleph.android.example12.activities.model.Category;
-import rs.aleph.android.example12.activities.model.Meal;
+import rs.aleph.android.example12.activities.provider.CategoryProvider;
+import rs.aleph.android.example12.activities.provider.IngredientsProvider;
+import rs.aleph.android.example12.activities.provider.MealProvider;
 
 // Each activity extends Activity class
-public class SecondActivity extends Activity {
+public class SecondActivity extends Activity implements AdapterView.OnItemClickListener {
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
 
     private int position = 0;
 
-    private Meal[] meals = new Meal[]{
-
-            new Meal("roasted-baby-spring-vegetables-ck.jpg", "Vegetables", "Roasted spring vegetables", Category.SIDE_DISH, "Potatoes, carrots, seasonal vegetables", 320, 470.0),
-            new Meal("Grilled-Salmon.jpg", "Grilled salmon", "Grilled salmon fish with grilled vegetables", Category.MAIN_DISH, "Fish, olive oil, vegetables", 650, 1500.0),
-            new Meal("chocolat-cake.jpg", "Chocolat cake", "Crispy bark with chocolate cream", Category.DESERT, "Chocolate, butter, nuts", 1000, 400.0),
-
-    };
 
     // onCreate method is a lifecycle method called when he activity is starting
     @Override
@@ -53,33 +50,41 @@ public class SecondActivity extends Activity {
 
         // Finds "tvName" TextView and sets "text" property
         TextView tvName = (TextView) findViewById(R.id.tv_name);
-        tvName.setText(meals[position].getName());
+        tvName.setText(MealProvider.getMealById(position).getName());
 
         // Finds "tvDescription" TextView and sets "text" property
         TextView tvDescription = (TextView) findViewById(R.id.tv_description);
-        tvDescription.setText(meals[position].getDescription());
+        tvDescription.setText(MealProvider.getMealById(position).getDescription());
 
         // Finds "tvDescription" TextView and sets "text" property
-        TextView tvCategory = (TextView) findViewById(R.id.tv_category);
-        tvCategory.setText(meals[position].getCategory().toString());
+        Spinner category = (Spinner) findViewById(R.id.sp_category);
+        List<String> categories = CategoryProvider.getCategoryNames();
+        ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, categories);
+        category.setAdapter(adapter);
+        category.setSelection((int) MealProvider.getMealById(position).getCategory().getId());
 
-        // Finds "tvDescription" TextView and sets "text" property
-        TextView tvIngredients = (TextView) findViewById(R.id.tv_ingredients);
-        tvIngredients.setText(meals[position].getIngredients());
+        final List<String> ingrediantsNames = IngredientsProvider.getIngredientsNames(MealProvider.getMealById(position));
+
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, R.layout.list_ingredients, ingrediantsNames);
+        ListView listView = (ListView) findViewById(R.id.listofIngredients);
+
+        listView.setAdapter(dataAdapter);
+
+        listView.setOnItemClickListener(this);
 
         // Finds "tvDescription" TextView and sets "text" property
         TextView tvCalories = (TextView) findViewById(R.id.tv_calories);
-        tvCalories.setText(meals[position].getCalories() + "");
+        tvCalories.setText(MealProvider.getMealById(position).getCalories() + "");
 
         // Finds "tvDescription" TextView and sets "text" property
         TextView tvPrice = (TextView) findViewById(R.id.tv_price);
-        tvPrice.setText(meals[position].getPrice() + "");
+        tvPrice.setText(MealProvider.getMealById(position).getPrice() + "");
 
         // Finds "ivImage" ImageView and sets "imageDrawable" property
         ImageView ivImage = (ImageView) findViewById(R.id.iv_image);
         InputStream is = null;
         try {
-            is = getAssets().open(meals[position].getImage());
+            is = getAssets().open(MealProvider.getMealById(position).getImage());
             Drawable drawable = Drawable.createFromStream(is, null);
             ivImage.setImageDrawable(drawable);
         } catch (IOException e) {
@@ -161,5 +166,12 @@ public class SecondActivity extends Activity {
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
             startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
         }
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+        Intent intent = new Intent(SecondActivity.this, SecondActivity.class);
+        intent.putExtra("position", position);
+        startActivity(intent);
     }
 }

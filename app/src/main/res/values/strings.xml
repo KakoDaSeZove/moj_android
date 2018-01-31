@@ -3,9 +3,6 @@
     <string name="app_name">Activities and Resourses</string>
     <string name="first_activity_name">First Activity</string>
     <string name="second_activity_name">Second Activity</string>
-    <string name="side_dish_name">Side dish</string>
-    <string name="main_dish_name">Main dish</string>
-    <string name="dessert_name">Dessert</string>
     <string name="name">NAME:</string>
     <string name="description">DESCRIPTION:</string>
     <string name="category">CATEGORY:</string>

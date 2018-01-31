@@ -1,6 +1,7 @@
 package rs.aleph.android.example12.activities.model;
 
-import java.util.Locale;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by androiddevelopment on 27.1.18..
@@ -12,15 +13,22 @@ public class Meal {
     private String name;
     private String description;
     private Category category;
-    private String ingredients;
+    private List<Ingredients> ingredients;
     private int calories;
     private double price;
 
     public Meal() {
+        ingredients = new ArrayList<>();
 
     }
 
-    public Meal(String image, String name, String description, Category category, String ingredients, int calories, double price) {
+    public Meal(int id, String name) {
+        this.id = id;
+        this.name = name;
+        ingredients = new ArrayList<>();
+    }
+
+    public Meal(String image, String name, String description, Category category, List<Ingredients> ingredients, int calories, double price) {
         this.image = image;
         this.name = name;
         this.description = description;
@@ -62,11 +70,11 @@ public class Meal {
         this.description = description;
     }
 
-    public String getIngredients() {
+    public List<Ingredients> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(String ingredients) {
+    public void setIngredients(List<Ingredients> ingredients) {
         this.ingredients = ingredients;
     }
 
