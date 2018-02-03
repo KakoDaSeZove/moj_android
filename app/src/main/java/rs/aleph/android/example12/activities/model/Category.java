@@ -11,18 +11,10 @@ public class Category {
 
      private int id;
      private String name;
-     private List<Meal> meals;
-
-     public Category(){
-          meals = new ArrayList<>();
-     }
 
      public Category(int id, String name) {
-
           this.id = id;
           this.name = name;
-
-          meals = new ArrayList<>();
      }
 
      public int getId() {
@@ -39,13 +31,5 @@ public class Category {
 
      public void setName(String name) {
           this.name = name;
-     }
-
-     public List<Meal> getMeals() {
-          return meals;
-     }
-
-     public void setMeals(List<Meal> meals) {
-          this.meals = meals;
      }
 }

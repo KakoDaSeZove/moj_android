@@ -39,7 +39,7 @@ public class SecondActivity extends Activity implements AdapterView.OnItemClickL
         // Each lifecycle method should call the method it overrides
         super.onCreate(savedInstanceState);
         // setContentView method draws UI
-        setContentView(R.layout.activity_second);
+        setContentView(R.layout.activity_second_constraint);
 
         // Shows a toast message (a pop-up message)
         Toast toast = Toast.makeText(getBaseContext(), "SecondActivity.onCreate()", Toast.LENGTH_SHORT);
@@ -65,8 +65,8 @@ public class SecondActivity extends Activity implements AdapterView.OnItemClickL
 
         final List<String> ingrediantsNames = IngredientsProvider.getIngredientsNames(MealProvider.getMealById(position));
 
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, R.layout.list_ingredients, ingrediantsNames);
-        ListView listView = (ListView) findViewById(R.id.listofIngredients);
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, R.layout.list_of_ingredients_constraint, ingrediantsNames);
+        ListView listView = (ListView) findViewById(R.id.listofIngredientsConstraint);
 
         listView.setAdapter(dataAdapter);
 
