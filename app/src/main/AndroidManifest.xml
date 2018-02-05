@@ -28,10 +28,6 @@
         </activity>
 
         <!-- Declares 2nd activity -->
-        <activity
-            android:name=".activities.activity.SecondActivity"
-            android:icon="@drawable/ic_android"
-            android:label="@string/second_activity_name"></activity>
 
     </application>
 

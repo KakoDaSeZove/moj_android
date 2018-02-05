@@ -1,6 +1,7 @@
 package rs.aleph.android.example12.activities.activity;
 
 import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,10 +14,14 @@ import android.widget.Toast;
 import java.util.List;
 
 import rs.aleph.android.example12.R;
+import rs.aleph.android.example12.activities.fragments.DetailFragment;
+import rs.aleph.android.example12.activities.fragments.MasterFragment;
 import rs.aleph.android.example12.activities.provider.MealProvider;
 
 // Each activity extends Activity class
-public class FirstActivity extends Activity implements AdapterView.OnItemClickListener{
+public class FirstActivity extends Activity implements MasterFragment.OnItemSelectedListener {
+
+    boolean landscape = false;
 
     // onCreate method is a lifecycle method called when he activity is starting
     @Override
@@ -31,15 +36,31 @@ public class FirstActivity extends Activity implements AdapterView.OnItemClickLi
         Toast toast = Toast.makeText(getBaseContext(), "FirstActivity.onCreate()", Toast.LENGTH_SHORT);
         toast.show();
 
-        final List<String> mealNames = MealProvider.getMealNames();
+        if (savedInstanceState == null) {
+            // FragmentTransaction is a set of changes (e.g. adding, removing and replacing fragments) that you want to perform at the same time.
+            FragmentTransaction ft = getFragmentManager().beginTransaction();
+            MasterFragment masterFragment = new MasterFragment();
 
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, R.layout.list_item, mealNames);
-        ListView listView = (ListView) findViewById(R.id.listofMeals);
+            ft.replace(R.id.master_view, masterFragment, "Master_Fragment_1");
+            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+            ft.commit();
+        }
+        // If the device is in the landscape mode and the detail fragment is null create detail fragment
+        if (findViewById(R.id.detail_view) != null) {
+            landscape = true;
+            getFragmentManager().popBackStack();
 
-        listView.setAdapter(dataAdapter);
-
-        listView.setOnItemClickListener(this);
-
+            DetailFragment detailFragment = (DetailFragment) getFragmentManager().findFragmentById(R.id.detail_view);
+            if (detailFragment == null) {
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                detailFragment = new DetailFragment();
+                ft.replace(R.id.detail_view, detailFragment, "Detail_Fragment_1");
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                ft.commit();
+            }
+        } else {
+            landscape = false;
+        }
     }
 
     // onStart method is a lifecycle method called after onCreate (or after onRestart when the
@@ -112,35 +133,26 @@ public class FirstActivity extends Activity implements AdapterView.OnItemClickLi
         toast.show();
     }
 
-    // Called when btnStart button is clicked
-    /*public void btnStartActivityClicked(View view) {
-        Intent intent = new Intent(FirstActivity.this, SecondActivity.class);
-
-        if (view.getId() == R.id.start_side_dish_activity) {
-            intent.putExtra("position", 2);
-        }else if (view.getId() ==R.id.start_main_dish_activity){
-            intent.putExtra("position", 1);
-        } else if (view.getId() == R.id.start_desert_activity) {
-            // This is an explicit intent (class property is specified)
-            intent.putExtra("position", 0);
-        }
-
-        // / startActivity method starts an activity
-        startActivity(intent);
-    }
-
-    // Called when btnOpen is clicked
-    public void btnOpenBrowserClicked(View view) {
-        // This is an implicit intent
-        Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://developer.android.com"));
-        // startActivity method starts an activity
-        startActivity(i);
-    }*/
 
     @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-        Intent intent = new Intent(FirstActivity.this, SecondActivity.class);
-        intent.putExtra("position", position);
-        startActivity(intent);
+    public void onItemSelected(int position) {
+
+        // Shows a toast message (a pop-up message)
+        Toast.makeText(getBaseContext(), "FirstActivity.onItemSelected()", Toast.LENGTH_SHORT).show();
+
+        if (landscape) {
+            // If the device is in the landscape mode updates detail fragment's content.
+            DetailFragment detailFragment = (DetailFragment) getFragmentManager().findFragmentById(R.id.detail_view);
+            detailFragment.updateContent(position);
+        } else {
+            // If the device is in the portrait mode sets detail fragment's content and replaces master fragment with detail fragment in a fragment transaction.
+            DetailFragment detailFragment = new DetailFragment();
+            detailFragment.setContent(position);
+            FragmentTransaction ft = getFragmentManager().beginTransaction();
+            ft.replace(R.id.master_view, detailFragment, "Detail_Fragment_2");
+            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+            ft.addToBackStack(null);
+            ft.commit();
+        }
     }
 }

@@ -88,8 +88,6 @@ public class MealProvider {
         meals.add(new Meal("chese-cake.jpeg", "Cheese cake", "Fresh cake with strawberries, roseberries and milky cream",
                 dessert, cheeseCake, 430, 370.0));
 
-
-
         return meals;
     }
 
@@ -109,7 +107,21 @@ public class MealProvider {
     public static Meal getMealById(int id) {
         List<Meal> meals = getMeals();
 
-                return meals.get(id);
-
+        switch (id) {
+            case 0:
+                return meals.get(0);
+            case 1:
+                return meals.get(1);
+            case 2:
+                return meals.get(2);
+            case 3:
+                return meals.get(3);
+            case 4:
+                return meals.get(4);
+            case 5:
+                return meals.get(5);
+            default:
+                return null;
+        }
     }
 }
