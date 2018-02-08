@@ -263,7 +263,7 @@ public class FirstActivity extends AppCompatActivity implements MasterFragment.O
         }
 
         RestorantDatePickerFragement datePickerDialog = new RestorantDatePickerFragement();
-        datePickerDialog.show(getFragmentManager(), "tag_name");
+       // datePickerDialog.show(getFragmentManager(), "tag_name");
 
         RestorantTimePickerFragement timePickerDialog = new RestorantTimePickerFragement();
         //timePickerDialog.show(getFragmentManager(), "tag_name");
@@ -348,6 +348,6 @@ public class FirstActivity extends AppCompatActivity implements MasterFragment.O
     public boolean onPrepareOptionsMenu(final Menu menu) {
         getMenuInflater().inflate(R.menu.action_bar, menu);
 
-        return super.onCreateOptionsMenu(menu);
+        return true;
     }
 }
