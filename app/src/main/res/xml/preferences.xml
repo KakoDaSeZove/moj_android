@@ -2,15 +2,15 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <CheckBoxPreference
         android:key="pref_key_auto_delete"
-        android:summary="Ovde ide opis 1"
-        android:title="Ovde ide naslov 1"
+        android:summary="Uvek sveza hrana"
+        android:title="Restoran 1"
         android:defaultValue="false" />
 
 
     <EditTextPreference
         android:key="pref_key_sms_delete_limit"
         android:dependency="pref_key_auto_delete"
-        android:summary="Ovde ide opis 2"
-        android:title="Ovde ide naslov 2" />
+        android:summary="Mogucnost dostave na kucnu adresu."
+        android:title="Milutina Milankovica 19" />
 
 </PreferenceScreen>

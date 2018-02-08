@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/addMeal"
+        android:icon="@drawable/ic_ingredients"
+        android:title="@string/add_meal_toolbar" />
+    <item
+        android:id="@+id/replaceMeal"
+        android:icon="@drawable/ic_ingredients"
+        android:title="@string/replace_meal_toolbar" />
+    <item
+        android:id="@+id/deleteMeal"
+        android:icon="@drawable/ic_ingredients"
+        android:title="@string/delete_meal_toolbar" />
+</menu>

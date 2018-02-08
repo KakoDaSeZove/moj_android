@@ -26,13 +26,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name="rs.aleph.android.example12.activities.activity.ChildActivity"
-            android:parentActivityName=".activities.activity.FirstActivity"
-            android:label="@string/child_activity_name">
-
-        </activity>
+            android:label="@string/child_activity_name"></activity>
     </application>
 
 </manifest>
