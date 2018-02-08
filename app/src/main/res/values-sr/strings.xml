@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Aktivnosti i Resursi</string>
     <string name="first_activity_name">Prva Aktivnost</string>
-    <string name="second_activity_name">Druga Aktivnost</string>
+    <string name="child_activity_name">Dete Aktivnost</string>
     <string name="side_dish_name">Predjelo</string>
     <string name="main_dish_name">Glavno jelo</string>
     <string name="dessert_name">Dezert</string>
@@ -14,4 +14,17 @@
     <string name="prise">CENA:</string>
     <string name="web_browser_button_name">Otvori Internet Pretrazivac</string>
     <string name="camera_button_name">Otvori Kameru</string>
+    <string name="settings_button_name">Otvori podesavanja</string>
+    <string name="alert_dialog">Da li ste zadovoljni sa danasnjom ponudom?</string>
+    <string name="yes">Da</string>
+    <string name="no">Ne</string>
+    <string name="sattisfied_message">Hvala vam na poverenju.Rado cemo vas ugostiti ponovo.</string>
+    <string name="unsattisfied_message">Znaci nam vase misljenje.Potrudicemo se da budemo bolji.</string>
+    <string name="pick_up_alert_dialog">Koje jelo biste zeleli da bude u sutrasnjoj ponudi?</string>
+    <string name="pick_up_message">Izabrali ste:</string>
+    <string name="fragment_dialog">Izaberite cenovni rang jela:</string>
+    <string name="fragment_dialog_two">Izaberite kalorijsku vrednost jela:</string>
+    <string name="add_meal_toolbar">Dodaj jelo</string>
+    <string name="replace_meal_toolbar">Zameni jelo</string>
+    <string name="delete_meal_toolbar">Ukloni jelo</string>
 </resources>

@@ -106,7 +106,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/prise" />
+                android:text="@string/alert_dialog" />
 
             <TextView
                 android:id="@+id/tv_price"
@@ -132,17 +132,10 @@
                 android:id="@+id/listofIngredients"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:scrollbars="vertical"/>
 
         </LinearLayout>
-        <!-- Declares a button that opens a browser -->
-        <Button
-            android:id="@+id/open_camera"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_camera"
-            android:onClick="btnOpenCameraClicked"
-            android:text="@string/camera_button_name" />
 
     </LinearLayout>
 

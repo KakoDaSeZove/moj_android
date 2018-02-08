@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBoxPreference
+        android:key="pref_key_auto_delete"
+        android:summary="Ovde ide opis 1"
+        android:title="Ovde ide naslov 1"
+        android:defaultValue="false" />
+
+
+    <EditTextPreference
+        android:key="pref_key_sms_delete_limit"
+        android:dependency="pref_key_auto_delete"
+        android:summary="Ovde ide opis 2"
+        android:title="Ovde ide naslov 2" />
+
+</PreferenceScreen>

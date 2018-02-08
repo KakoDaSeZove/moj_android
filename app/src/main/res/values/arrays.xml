@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <array name="a_tommorow_offer">
+        <item>Soup</item>
+        <item>Fruit salat</item>
+        <item>Hamburger</item>
+    </array>
+
+</resources>

@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Activities and Resourses</string>
     <string name="first_activity_name">First Activity</string>
-    <string name="second_activity_name">Second Activity</string>
+    <string name="child_activity_name">Child Activity</string>
     <string name="side_dish_name">Side dish</string>
     <string name="main_dish_name">Main dish</string>
     <string name="dessert_name">Dessert</string>
@@ -14,4 +14,17 @@
     <string name="prise">PRICE:</string>
     <string name="web_browser_button_name">Open WEB Browser</string>
     <string name="camera_button_name">Open Camera</string>
+    <string name="settings_button_name">Open settings</string>
+    <string name="alert_dialog">Are you satisfied with today\'s offer?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="sattisfied_message">Thank you for being our guest.Looking forvard to serve you again.</string>
+    <string name="unsattisfied_message">We appreciate your oppinion.</string>
+    <string name="pick_up_alert_dialog">Choose meal for tommorow offer?</string>
+    <string name="pick_up_message">You\'ve chosen:</string>
+    <string name="fragment_dialog">Chose price level:</string>
+    <string name="fragment_dialog_two">Chose calory level:</string>
+    <string name="add_meal_toolbar">Add meal</string>
+    <string name="replace_meal_toolbar">Replace meal</string>
+    <string name="delete_meal_toolbar">Delete meal</string>
 </resources>

@@ -13,9 +13,9 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/web_browser_button_name"
-        android:id="@+id/open_browser"
-        android:onClick="btnOpenBrowserClicked"
+        android:text="@string/settings_button_name"
+        android:id="@+id/open_settings"
+        android:onClick="onOpenSettingClicked"
         android:drawableLeft="@drawable/ic_web_browser"/>
 
 </LinearLayout>
