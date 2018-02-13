@@ -27,4 +27,7 @@
     <string name="add_meal_toolbar">Add meal</string>
     <string name="replace_meal_toolbar">Replace meal</string>
     <string name="delete_meal_toolbar">Delete meal</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Settings</string>
 </resources>

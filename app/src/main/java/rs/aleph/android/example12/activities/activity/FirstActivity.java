@@ -18,7 +18,10 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
 import android.support.design.widget.Snackbar;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.NotificationCompat;
 import android.support.v7.widget.Toolbar;
@@ -26,6 +29,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.ListView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -49,8 +53,15 @@ public class FirstActivity extends AppCompatActivity implements MasterFragment.O
         // setContentView method draws UI
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar  = (Toolbar)findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
 
         // Shows a toast message (a pop-up message)
         Snackbar snackbar = Snackbar.make(findViewById(R.id.master_view), "Hello from FirstActivity onCreate()", Snackbar.LENGTH_LONG);
@@ -166,7 +177,6 @@ public class FirstActivity extends AppCompatActivity implements MasterFragment.O
             }
         });
         //fragmentAlertDialogBuilder.create().show();
-
     }
 
 
@@ -263,10 +273,21 @@ public class FirstActivity extends AppCompatActivity implements MasterFragment.O
         }
 
         RestorantDatePickerFragement datePickerDialog = new RestorantDatePickerFragement();
+<<<<<<< a502d529dc54e7ed3556ea355afd04b43dc3da63
        // datePickerDialog.show(getFragmentManager(), "tag_name");
+=======
+        //datePickerDialog.show(getFragmentManager(), "tag_name");
+>>>>>>> Add support for navigator and drawer
 
         RestorantTimePickerFragement timePickerDialog = new RestorantTimePickerFragement();
         //timePickerDialog.show(getFragmentManager(), "tag_name");
+    }
+
+    public boolean onNavigationItemSelected(MenuItem item) {
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return false;
     }
 
     @SuppressLint("ValidFragment")
@@ -316,7 +337,7 @@ public class FirstActivity extends AppCompatActivity implements MasterFragment.O
     }
 
     @SuppressLint("ValidFragment")
-    private class RestoranSettingsFragment extends PreferenceFragment {
+    public static class RestoranSettingsFragment extends PreferenceFragment {
         @Override
         public void onCreate(Bundle state) {
             super.onCreate(state);
@@ -325,8 +346,8 @@ public class FirstActivity extends AppCompatActivity implements MasterFragment.O
         }
     }
 
-    public boolean onOptionsItemSelected (MenuItem item){
-        switch (item.getItemId()){
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
             case R.id.addMeal:
                 Snackbar snackbar = Snackbar.make(findViewById(R.id.master_view), "Dodali ste jelo", Snackbar.LENGTH_LONG);
                 snackbar.show();
@@ -346,8 +367,9 @@ public class FirstActivity extends AppCompatActivity implements MasterFragment.O
 
     @Override
     public boolean onPrepareOptionsMenu(final Menu menu) {
-        getMenuInflater().inflate(R.menu.action_bar, menu);
-
-        return true;
+        if(menu.size() == 0) {
+            getMenuInflater().inflate(R.menu.action_bar, menu);
+        }
+        return super.onCreateOptionsMenu(menu);
     }
 }

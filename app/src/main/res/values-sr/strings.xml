@@ -27,4 +27,7 @@
     <string name="add_meal_toolbar">Dodaj jelo</string>
     <string name="replace_meal_toolbar">Zameni jelo</string>
     <string name="delete_meal_toolbar">Ukloni jelo</string>
+    <string name="navigation_drawer_open">Otvori navigacioni drover</string>
+    <string name="navigation_drawer_close">Zatvori navigacioni drover</string>
+    <string name="action_settings">Podesavanja</string>
 </resources>
