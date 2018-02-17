@@ -37,6 +37,10 @@ public class DetailFragment extends Fragment {
     private boolean running;
     private boolean wasrunning;
 
+    public void setPosition(int position) {
+        this.position = position;
+    }
+
     // onAttach method is a life-cycle method that is called when a fragment is first attached to its context.
     @Override
     public void onAttach(Activity activity) {

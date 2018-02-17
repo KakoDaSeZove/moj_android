@@ -41,7 +41,8 @@ public class SyncTaskIngredients extends AsyncTask<Void, Void, List> {
     protected List doInBackground(Void... params) {
         try {
 
-            Thread.sleep(2000);
+            Thread.sleep(1000);
+
 
             List<Ingredients> ingredients = IngredientsProvider.getIngredients();
             List<String> ingredientNames = new ArrayList<>();

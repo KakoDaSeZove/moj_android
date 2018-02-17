@@ -16,6 +16,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.preference.PreferenceFragment;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
@@ -43,6 +44,13 @@ import rs.aleph.android.example12.activities.fragments.MasterFragment;
 public class FirstActivity extends AppCompatActivity implements MasterFragment.OnItemSelectedListener {
 
     boolean landscape = false;
+    private int position;
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("position", this.position);
+    }
 
     // onCreate method is a lifecycle method called when he activity is starting
     @Override
@@ -51,6 +59,9 @@ public class FirstActivity extends AppCompatActivity implements MasterFragment.O
         // Each lifecycle method should call the method it overrides
         super.onCreate(savedInstanceState);
         // setContentView method draws UI
+        if(savedInstanceState != null) {
+            this.position = savedInstanceState.getInt("position");
+        }
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -118,6 +129,7 @@ public class FirstActivity extends AppCompatActivity implements MasterFragment.O
             if (detailFragment == null) {
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
                 detailFragment = new DetailFragment();
+                detailFragment.setPosition(this.position);
                 ft.replace(R.id.detail_view, detailFragment, "Detail_Fragment_1");
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
                 ft.commit();
@@ -253,6 +265,7 @@ public class FirstActivity extends AppCompatActivity implements MasterFragment.O
 
     @Override
     public void onItemSelected(int position) {
+        this.position = position;
 
         // Shows a toast message (a pop-up message)
         Toast.makeText(getBaseContext(), "FirstActivity.onItemSelected()", Toast.LENGTH_SHORT).show();
@@ -260,11 +273,12 @@ public class FirstActivity extends AppCompatActivity implements MasterFragment.O
         if (landscape) {
             // If the device is in the landscape mode updates detail fragment's content.
             DetailFragment detailFragment = (DetailFragment) getFragmentManager().findFragmentById(R.id.detail_view);
-            detailFragment.updateContent(position);
+            detailFragment.updateContent(this.position);
         } else {
             // If the device is in the portrait mode sets detail fragment's content and replaces master fragment with detail fragment in a fragment transaction.
             DetailFragment detailFragment = new DetailFragment();
-            detailFragment.setContent(position);
+            detailFragment.setPosition(this.position);
+            detailFragment.setContent(this.position);
             FragmentTransaction ft = getFragmentManager().beginTransaction();
             ft.replace(R.id.master_view, detailFragment, "Detail_Fragment_2");
             ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
