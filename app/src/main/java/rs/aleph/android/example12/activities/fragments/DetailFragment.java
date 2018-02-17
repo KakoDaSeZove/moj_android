@@ -21,6 +21,8 @@ import java.io.InputStream;
 import java.util.List;
 
 import rs.aleph.android.example12.R;
+import rs.aleph.android.example12.activities.async.SyncTask;
+import rs.aleph.android.example12.activities.async.SyncTaskIngredients;
 import rs.aleph.android.example12.activities.provider.CategoryProvider;
 import rs.aleph.android.example12.activities.provider.IngredientsProvider;
 import rs.aleph.android.example12.activities.provider.MealProvider;
@@ -32,6 +34,8 @@ import rs.aleph.android.example12.activities.provider.MealProvider;
 public class DetailFragment extends Fragment {
     // Position of the item to be displayed in the detail fragment
     private int position = 0;
+    private boolean running;
+    private boolean wasrunning;
 
     // onAttach method is a life-cycle method that is called when a fragment is first attached to its context.
     @Override
@@ -54,6 +58,8 @@ public class DetailFragment extends Fragment {
 
         if (savedInstanceState != null) {
             position = savedInstanceState.getInt("position");
+            running = savedInstanceState.getBoolean("running");
+            wasrunning = savedInstanceState.getBoolean("wasRunning");
         }
     }
 
@@ -98,16 +104,8 @@ public class DetailFragment extends Fragment {
         category.setAdapter(adapter);
         category.setSelection((int) MealProvider.getMealById(position).getCategory().getId());
 
-        final List<String> ingrediantsNames = IngredientsProvider.getIngredientsNames(MealProvider.getMealById(position));
-
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(), R.layout.list_ingredients, ingrediantsNames);
-        ListView listView = (ListView) getView().findViewById(R.id.listofIngredients);
-
-        listView.setAdapter(dataAdapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            }
-        });
+        SyncTaskIngredients sync = new SyncTaskIngredients(getActivity(), this);
+        sync.execute();
 
 
         TextView tvCalories = (TextView) getView().findViewById(R.id.tv_calories);
@@ -142,6 +140,9 @@ public class DetailFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        if (wasrunning){
+            running = true;
+        }
 
         // Shows a toast message (a pop-up message)
         Toast.makeText(getActivity(), "DetailFragment.onResume()", Toast.LENGTH_SHORT).show();
@@ -151,6 +152,8 @@ public class DetailFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
+        wasrunning = running;
+        running = false;
 
         // Shows a toast message (a pop-up message)
         Toast.makeText(getActivity(), "DetailFragment.onPause()", Toast.LENGTH_SHORT).show();
@@ -199,6 +202,10 @@ public class DetailFragment extends Fragment {
 
         super.onSaveInstanceState(savedInstanceState);
 
+        savedInstanceState.putInt("position", position);
+        savedInstanceState.putBoolean("running", running);
+        savedInstanceState.putBoolean("wasRunning", wasrunning);
+
         // Shows a toast message (a pop-up message)
         Toast.makeText(getActivity(), "DetailFragment.onSaveInstanceState()", Toast.LENGTH_SHORT).show();
 
@@ -209,6 +216,7 @@ public class DetailFragment extends Fragment {
     public void setContent(final int position) {
 
         this.position = position;
+        running = true;
 
         Log.v("DetailFragment", "setContent() sets position to " + position);
     }

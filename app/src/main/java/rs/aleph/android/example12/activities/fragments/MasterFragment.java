@@ -16,6 +16,7 @@ import android.widget.Toast;
 import java.util.List;
 
 import rs.aleph.android.example12.R;
+import rs.aleph.android.example12.activities.async.SyncTask;
 import rs.aleph.android.example12.activities.provider.MealProvider;
 
 /**
@@ -27,6 +28,7 @@ public class MasterFragment extends Fragment {
     public interface OnItemSelectedListener {
 
         public void onItemSelected(int position);
+
     }
 
     OnItemSelectedListener listener;
@@ -70,22 +72,9 @@ public class MasterFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
 
         super.onActivityCreated(savedInstanceState);
+        SyncTask sync = new SyncTask(getActivity(), this);
+        sync.execute();
 
-        Toast.makeText(getActivity(), "MasterFragment.onActivityCreated()", Toast.LENGTH_SHORT).show();
-
-
-        final List<String> mealNames = MealProvider.getMealNames();
-
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(), R.layout.list_item, mealNames);
-        ListView listView = (ListView) getView().findViewById(R.id.listofMeals);
-
-        listView.setAdapter(dataAdapter);
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                listener.onItemSelected(position);
-            }
-        });
 
     }
 

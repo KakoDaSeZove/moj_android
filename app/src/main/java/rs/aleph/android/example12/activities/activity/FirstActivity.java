@@ -273,11 +273,8 @@ public class FirstActivity extends AppCompatActivity implements MasterFragment.O
         }
 
         RestorantDatePickerFragement datePickerDialog = new RestorantDatePickerFragement();
-<<<<<<< a502d529dc54e7ed3556ea355afd04b43dc3da63
        // datePickerDialog.show(getFragmentManager(), "tag_name");
-=======
         //datePickerDialog.show(getFragmentManager(), "tag_name");
->>>>>>> Add support for navigator and drawer
 
         RestorantTimePickerFragement timePickerDialog = new RestorantTimePickerFragement();
         //timePickerDialog.show(getFragmentManager(), "tag_name");
